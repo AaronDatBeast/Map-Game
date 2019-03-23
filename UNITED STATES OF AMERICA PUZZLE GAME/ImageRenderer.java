@@ -1,11 +1,13 @@
 import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class ImageRenderer {
+public class ImageRenderer implements MouseListener{
 	public ImageRenderer(File img_file, JFrame frame, JPanel panel) {
 		BufferedImage image = null;
 		try { 
@@ -26,5 +28,35 @@ public class ImageRenderer {
 
 		jlabel.setBounds(100,0, image.getWidth(), image.getHeight());
 
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
