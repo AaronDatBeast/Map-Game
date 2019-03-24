@@ -1,4 +1,5 @@
-import java.awt.*;	
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
@@ -14,11 +15,14 @@ public class MapGameMain {
 		frame.setContentPane(panel);
 		frame.setLayout(new BorderLayout());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ArrayList<StateImage> states = new ArrayList<StateImage>();
+		ArrayList<BufferedImage> layers = new ArrayList<BufferedImage>();
 		
-		ArrayList<StateImage> merica = new ArrayList<StateImage>();
-		
-		merica.add(new StateImage(frame, panel, 0, 0, new File("alabama.png"), 4));
-		merica.add(new StateImage(frame, panel, 0, 0, new File("arizona.png"),4));
+		states.add(new StateImage(frame, panel, 0, 0, new File("alabama.png"), 4));
+		ImageRenderer n = new ImageRenderer(new File("alabama.png"), frame, panel, 0,0,4,layers, states);
+
+//		layers.add(new ImageRender(frame, panel, 0, 0, new File("alabama.png"), 4));
+//		merica.add(new StateImage(frame, panel, 0, 0, new File("arizona.png"),4));
 //		merica.add(new StateImage(frame, panel, 20, 0, new File("arkansas.png")));
 //		merica.add(new StateImage(frame, panel, 30, 0, new File("california.png")));
 //		merica.add(new StateImage(frame, panel, 40, 0, new File("colorado.png")));

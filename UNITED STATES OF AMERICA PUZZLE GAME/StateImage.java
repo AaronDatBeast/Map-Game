@@ -15,7 +15,6 @@ public class StateImage {
 		this.xPos = xPos;
 		this.yPos = yPos;
 		this.stateImage = stateImage;
-		ImageRenderer r = new ImageRenderer(stateImage, frame, panel, xPos, yPos, p);
 	}
 	public boolean containsPoint(int x, int y) {
 		BufferedImage image = null;
