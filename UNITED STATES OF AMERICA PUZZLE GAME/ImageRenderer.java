@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class ImageRenderer implements MouseListener{
-	public ImageRenderer(File img_file, JFrame frame, JPanel panel) {
+	public ImageRenderer(File img_file, JFrame frame, JPanel panel, int x, int y) {
 		BufferedImage image = null;
 		try { 
 			image = ImageIO.read(img_file); 
@@ -26,7 +26,7 @@ public class ImageRenderer implements MouseListener{
 		frame.getContentPane().add(jlabel);
 		frame.getContentPane().setLayout(null);
 
-		jlabel.setBounds(100,0, image.getWidth(), image.getHeight());
+		jlabel.setBounds(x,y, image.getWidth(), image.getHeight());
 
 	}
 
