@@ -1,20 +1,53 @@
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class ImageRenderer implements MouseListener{
-private StateImage state;
+	
+	public class DragImage extends JComponent implements MouseMotionListener {
+		Image image;
+		int width, height;
+		int imageX, imageY;
+		
+		public DragImage(Image image) {
+			this.image = image;
+			addMouseMotionListener(this);
+		}
+
+		public void paint(Graphics g) {
+			Graphics2D g2d = (Graphics2D) g;
+			g2d.drawImage(image, imageX, imageY, this);
+		}
+		@Override
+		public void mouseDragged(MouseEvent e) {
+			// TODO Auto-generated method stub
+			imageX = e.getX();
+			imageY = e.getY();
+			repaint();
+		}
+
+		@Override
+		public void mouseMoved(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	}
+
+
 	public ImageRenderer(File img_file, JFrame frame, JPanel panel, int x, int y, int p) {
 
-	
+
 		
 		BufferedImage image = null;
 		try { 
@@ -23,23 +56,21 @@ private StateImage state;
 
 		}
 
-		JLabel jlabel = new JLabel();
 		Image newImage = image.getScaledInstance(image.getWidth()/p,image.getHeight()/p,Image.SCALE_SMOOTH);
-		jlabel.setIcon(new ImageIcon(newImage));
-
-
-
-		frame.getContentPane().add(jlabel);
-		frame.getContentPane().setLayout(null);
-
-		jlabel.setBounds(x,y, image.getWidth(), image.getHeight());//sets position
-		
+	
 		
 
 
 
+		frame.getContentPane().add(new DragImage(newImage));
+		
+		
+
+ 
 	}
 
+	
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -52,9 +83,9 @@ private StateImage state;
 		int currentlyClickedX = e.getX();
 		int currentlyClickedY = e.getY();
 		
-		if (state.containsPoint(currentlyClickedX, currentlyClickedY)) {
+		//if (state.containsPoint(currentlyClickedX, currentlyClickedY)) {
 			
-		}
+		//}
 	}
 
 	@Override
